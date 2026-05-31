@@ -5,9 +5,21 @@ import { useGeolocation } from "@/hooks/useGeolocation";
 import { useWeather } from "@/hooks/useWeather";
 import { getSunPosition, getRainbowDirection, isSunBelowHorizon } from "@/lib/sunCalc";
 import { CompassCard } from "@/components/CompassCard";
+import { WeatherCondition } from "@/components/WeatherCondition";
+import type { WeatherCondition as WeatherConditionType } from "@/types/index";
 
 // TASK-04 確認用: 東京座標で計算結果を出力
 const TEST_LOCATION = { latitude: 35.6, longitude: 139.7 };
+
+// TASK-07 確認用: モックデータ
+const MOCK_CONDITION_GOOD: WeatherConditionType = {
+  status: "出やすい",
+  reason: "雨が降っており、太陽が見える状態です。虹が出やすい条件です。",
+};
+const MOCK_CONDITION_BAD: WeatherConditionType = {
+  status: "出にくい",
+  reason: "雲量が多く、太陽が雲に隠れています。虹が出にくい状態です。",
+};
 
 export default function Home() {
   const { location, status: geoStatus, errorMessage: geoError } = useGeolocation();
@@ -58,6 +70,30 @@ export default function Home() {
       <div className="mt-8 w-full max-w-xs">
         <p className="text-center text-sm text-gray-500 mb-2">（TASK-06 確認用: 135° 南東）</p>
         <CompassCard azimuth={135} compassLabel="南東" />
+      </div>
+
+      {/* TASK-07 確認用: 「出やすい」モックデータ */}
+      <div className="mt-8 w-full max-w-xs">
+        <p className="text-center text-sm text-gray-500 mb-2">（TASK-07 確認用: 出やすい）</p>
+        <WeatherCondition condition={MOCK_CONDITION_GOOD} status="success" />
+      </div>
+
+      {/* TASK-07 確認用: 「出にくい」モックデータ */}
+      <div className="mt-4 w-full max-w-xs">
+        <p className="text-center text-sm text-gray-500 mb-2">（TASK-07 確認用: 出にくい）</p>
+        <WeatherCondition condition={MOCK_CONDITION_BAD} status="success" />
+      </div>
+
+      {/* TASK-07 確認用: ローディング状態 */}
+      <div className="mt-4 w-full max-w-xs">
+        <p className="text-center text-sm text-gray-500 mb-2">（TASK-07 確認用: ローディング）</p>
+        <WeatherCondition condition={null} status="loading" />
+      </div>
+
+      {/* TASK-07 確認用: エラー状態 */}
+      <div className="mt-4 w-full max-w-xs">
+        <p className="text-center text-sm text-gray-500 mb-2">（TASK-07 確認用: エラー）</p>
+        <WeatherCondition condition={null} status="error" />
       </div>
     </main>
   );

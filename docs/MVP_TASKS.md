@@ -181,7 +181,7 @@ feat: add Open-Meteo weather data hook
 
 ## TASK-06: コンパス UI コンポーネント
 
-**ステータス**: [EVAL]
+**ステータス**: [DONE]
 **担当**: Generator
 **依存**: TASK-04
 
@@ -217,7 +217,7 @@ feat: add CompassCard UI component
 
 ## TASK-07: 気象条件表示コンポーネント
 
-**ステータス**: [ ]
+**ステータス**: [WIP]
 **担当**: Generator
 **依存**: TASK-05
 
