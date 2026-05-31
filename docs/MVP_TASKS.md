@@ -110,7 +110,7 @@ feat: add useGeolocation hook
 
 ## TASK-04: 太陽位置計算・虹方角計算ロジック
 
-**ステータス**: [WIP]
+**ステータス**: [EVAL]
 **担当**: Generator
 **依存**: TASK-03
 

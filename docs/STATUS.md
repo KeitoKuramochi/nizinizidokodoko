@@ -4,7 +4,7 @@
 
 ## 現在のフェーズ
 
-**Phase**: TASK-03 実装完了 / Evaluator 評価待ち
+**Phase**: TASK-04 実装完了 / Evaluator 評価待ち
 **最終更新**: 2026-05-31
 **担当エージェント**: Generator
 
@@ -15,7 +15,7 @@
 | TASK-01 | プロジェクト初期化・ビルド確認 | [DONE] | 018dd3c | 合格 |
 | TASK-02 | 型定義ファイルの作成 | [DONE] | 85042e3 | 合格 |
 | TASK-03 | 位置情報取得フック | [DONE] | a2d2e32 | 合格 |
-| TASK-04 | 太陽位置計算・虹方角計算ロジック | [WIP] | — | 実装中 |
+| TASK-04 | 太陽位置計算・虹方角計算ロジック | [EVAL] | cd60ae1 | Evaluator 評価待ち |
 | TASK-05 | Open-Meteo API 取得フック | [ ] | — | TASK-03 完了後に着手 |
 | TASK-06 | コンパス UI コンポーネント | [ ] | — | TASK-04 完了後に着手 |
 | TASK-07 | 気象条件表示コンポーネント | [ ] | — | TASK-05 完了後に着手 |
@@ -23,6 +23,13 @@
 | TASK-09 | 最終 UI 調整・スマホ対応確認 | [ ] | — | TASK-08 完了後に着手 |
 
 ## 直近の作業ログ
+
+### TASK-04 完了
+- **日時**: 2026-05-31
+- **変更ファイル**: lib/sunCalc.ts（新規）, app/page.tsx
+- **commit**: cd60ae1
+- **自己評価**: lib/sunCalc.ts に getSunPosition / getRainbowDirection / azimuthToCompassLabel / isSunBelowHorizon を実装。suncalc のラジアン値を北基準 0〜360° に変換。app/page.tsx に東京座標（lat:35.6, lng:139.7）での確認用 console.log を追加。npm run build 成功確認。any型・@ts-ignore なし。
+- **Evaluator 確認待ち**: ブラウザコンソールに[TASK-04]ラベルで太陽方位角・仰角・虹方角の数値が出力されること、虹方角が 0〜360° 範囲内であること
 
 ### TASK-03 完了
 - **日時**: 2026-05-31
