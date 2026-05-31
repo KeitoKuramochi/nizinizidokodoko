@@ -4,7 +4,7 @@
 
 ## 現在のフェーズ
 
-**Phase**: TASK-08 実装完了 / Evaluator 評価待ち
+**Phase**: TASK-09 実装完了 / Evaluator 評価待ち
 **最終更新**: 2026-05-31
 **担当エージェント**: Generator
 
@@ -20,9 +20,16 @@
 | TASK-06 | コンパス UI コンポーネント | [DONE] | 6dd7b1c | 合格 |
 | TASK-07 | 気象条件表示コンポーネント | [DONE] | 84e376f | 合格 |
 | TASK-08 | ホーム画面の組み立て・エラーハンドリング | [DONE] | 2838745 | 合格 |
-| TASK-09 | 最終 UI 調整・スマホ対応確認 | [ ] | — | TASK-08 完了後に着手 |
+| TASK-09 | 最終 UI 調整・スマホ対応確認 | [EVAL] | 1e9ea98 | Evaluator 評価待ち |
 
 ## 直近の作業ログ
+
+### TASK-09 完了
+- **日時**: 2026-05-31
+- **変更ファイル**: app/page.tsx, app/layout.tsx, app/globals.css, components/CompassCard.tsx, components/WeatherCondition.tsx
+- **commit**: 1e9ea98
+- **自己評価**: AppHeader（NiziProタイトル + サブタイトル）を全画面共通で追加。ローディング中はアニメーションスピナー + テキストを表示（一瞬で消えない）。CompassCard・WeatherConditionにbg-white/rounded/shadowのカードスタイル追加。SVGテキストに fontFamily="sans-serif" を明示してフォントアーティファクト修正。html/body に overflow-x: hidden を設定して横スクロール防止。viewport export で device-width/initialScale=1 を明示。globals.css のダークモード変数削除（常にライトモード）。bg-gray-50をbodyに適用。any型・@ts-ignore なし。npm run build 成功確認。
+- **Evaluator 確認待ち**: 画面上部にNiziProタイトルが表示されること・ローディング中スピナーが表示されること・スマホ幅375pxで横スクロールなし・PC幅1280pxでレイアウト崩れなし・CompassCardのSVGラベルがクリアに表示されること
 
 ### TASK-08 完了
 - **日時**: 2026-05-31
