@@ -23,13 +23,14 @@
 - [x] TASK-01: `src/types/index.ts` 型定義作成
 - [x] TASK-01: `src/lib/geo.ts` 方位角・距離計算実装
 - [x] TASK-02: `src/lib/mockData.ts` モックデータ（5件）作成
+- [x] TASK-03: `src/hooks/useGeolocation.ts` 位置情報取得フック実装
 
 ---
 
 ## 次にやること
-**TASK-03: 位置情報取得フック**
-- `src/hooks/useGeolocation.ts` を実装
-- 参照: `docs/MVP_TASKS.md` TASK-03
+**TASK-04: コンパス UI コンポーネント**
+- `src/components/CompassCard.tsx` を実装
+- 参照: `docs/MVP_TASKS.md` TASK-04
 
 ---
 
