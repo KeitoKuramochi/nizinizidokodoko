@@ -3,7 +3,7 @@
 最終更新: 2026-05-31 (TASK-02 完了)
 
 ## 現在のフェーズ
-**Phase 1: MVP 実装中（TASK-02 完了、TASK-03 着手前）**
+**Phase 1: MVP 実装 全タスク完了 ✅**
 
 ---
 
@@ -24,13 +24,15 @@
 - [x] TASK-01: `src/lib/geo.ts` 方位角・距離計算実装
 - [x] TASK-02: `src/lib/mockData.ts` モックデータ（5件）作成
 - [x] TASK-03: `src/hooks/useGeolocation.ts` 位置情報取得フック実装
+- [x] TASK-04: `src/components/CompassCard.tsx` SVG コンパス UI 実装
+- [x] TASK-05: `src/app/page.tsx` ホーム画面組み立て（全 TASK 統合）
 
 ---
 
 ## 次にやること
-**TASK-04: コンパス UI コンポーネント**
-- `src/components/CompassCard.tsx` を実装
-- 参照: `docs/MVP_TASKS.md` TASK-04
+**MVP 完成 — 動作確認と次フェーズの検討**
+- `npm run dev` で動作確認
+- 次ステップ候補: X API 連携 / PWA 対応 / テスト追加
 
 ---
 
