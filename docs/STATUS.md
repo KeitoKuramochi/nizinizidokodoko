@@ -4,7 +4,7 @@
 
 ## 現在のフェーズ
 
-**Phase**: TASK-05 実装完了 / Evaluator 評価待ち
+**Phase**: TASK-06 実装完了 / Evaluator 評価待ち
 **最終更新**: 2026-05-31
 **担当エージェント**: Generator
 
@@ -17,12 +17,19 @@
 | TASK-03 | 位置情報取得フック | [DONE] | a2d2e32 | 合格 |
 | TASK-04 | 太陽位置計算・虹方角計算ロジック | [DONE] | cd60ae1 | 合格 |
 | TASK-05 | Open-Meteo API 取得フック | [DONE] | 19b4c97 | 合格 |
-| TASK-06 | コンパス UI コンポーネント | [ ] | — | TASK-04 完了後に着手 |
+| TASK-06 | コンパス UI コンポーネント | [EVAL] | 6dd7b1c | Evaluator 評価待ち |
 | TASK-07 | 気象条件表示コンポーネント | [ ] | — | TASK-05 完了後に着手 |
 | TASK-08 | ホーム画面の組み立て・エラーハンドリング | [ ] | — | TASK-06, 07 完了後に着手 |
 | TASK-09 | 最終 UI 調整・スマホ対応確認 | [ ] | — | TASK-08 完了後に着手 |
 
 ## 直近の作業ログ
+
+### TASK-06 完了
+- **日時**: 2026-05-31
+- **変更ファイル**: components/CompassCard.tsx（新規）, app/page.tsx
+- **commit**: 6dd7b1c
+- **自己評価**: SVGによる方位盤（N/NE/E/SE/S/SW/W/NWラベル付き）とCSS transform rotate でazimuth分回転する矢印を実装。北向き矢印が赤、南向きが灰色。方位角の数値と8方位ラベルをテキスト表示。app/page.tsx で135°（南東）を仮表示。npm run build 成功確認。any型・@ts-ignore なし。
+- **Evaluator 確認待ち**: 方位角0°/90°/180°での矢印向き確認、スマホ幅375pxでコンパスが画面内に収まること
 
 ### TASK-05 完了
 - **日時**: 2026-05-31

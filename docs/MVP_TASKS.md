@@ -181,7 +181,7 @@ feat: add Open-Meteo weather data hook
 
 ## TASK-06: コンパス UI コンポーネント
 
-**ステータス**: [WIP]
+**ステータス**: [EVAL]
 **担当**: Generator
 **依存**: TASK-04
 
