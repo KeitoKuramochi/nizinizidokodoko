@@ -1,86 +1,77 @@
-# ERROR_FIX_LOOP.md
+# ERROR FIX LOOP
 
-Claude Code がエラーに遭遇したときの自律修正手順。
+Generator が `npm run build` でエラーが出た場合の対処手順です。
 
----
+## 基本ルール
 
-## ステップ 0: エラーを分類する
+- 最大 **3回** まで修正を試みる
+- 3回修正しても解決しない場合は **停止して人間に報告** する
+- 修正範囲は**当該 TASK のファイルのみ**に限定する
+- エラーと無関係なコードを触らない
 
-| 種類 | 見分け方 | 対処 |
+## 修正ループ手順
+
+### Step 1: エラーを読む
+
+```
+npm run build 2>&1
+```
+
+エラーメッセージ全文を確認する。
+
+### Step 2: エラーを分類する
+
+| 種別 | 例 | 対処 |
 |---|---|---|
-| TypeScript 型エラー | `Type error:` / `TS2xxx` | STEP A |
-| ビルドエラー（構文） | `SyntaxError` / `Unexpected token` | STEP B |
-| モジュール未解決 | `Cannot find module` | STEP C |
-| ランタイムエラー | ブラウザコンソール・サーバーログ | STEP D |
+| TypeScript 型エラー | `Type 'string' is not assignable to type 'number'` | 型定義を修正する |
+| import エラー | `Module not found` | パスを確認・修正する |
+| 構文エラー | `Unexpected token` | 該当箇所の構文を修正する |
+| 依存関係エラー | `Cannot find module 'xxx'` | package.json を確認する（勝手に追加しない） |
+| 環境依存エラー | ブラウザ API がサーバーサイドで呼ばれている | `'use client'` ディレクティブや動的インポートで対処 |
 
----
+### Step 3: 修正する
 
-## STEP A: TypeScript 型エラー
+- 1回の修正で複数箇所を同時に修正してよい
+- ただし TASK の範囲外のファイルは触らない
 
-1. エラーメッセージのファイル名・行番号を確認する
-2. `src/types/index.ts` の型定義と実際の使用箇所を照合する
-3. `any` は使わず、正しい型を定義して修正する
-4. `npm run build` で再確認
-
----
-
-## STEP B: 構文エラー
-
-1. エラーが示すファイル・行を開く
-2. 閉じ括弧・クォート・インポートの不整合を確認する
-3. 修正後に `npm run build`
-
----
-
-## STEP C: モジュール未解決
-
-1. `import` のパスが正しいか確認（`@/` エイリアスは `src/` を指す）
-2. 対象ファイルが実際に存在するか確認
-3. `node_modules` に入っているか確認（なければ `npm install <pkg>`）
-4. `npm run build`
-
----
-
-## STEP D: ランタイムエラー
-
-1. エラースタックトレースを読む
-2. Server Component / Client Component の境界で `"use client"` が必要か確認
-3. `window` / `document` / `navigator` は Client Component からのみ呼ぶ
-4. `npm run build`
-
----
-
-## 3 回失敗したら停止
-
-修正を 3 回試みてもビルドが通らない場合:
+### Step 4: ビルドを再実行する
 
 ```
-【修正失敗レポート】
-- エラー内容:
-- 試みた修正1:
-- 試みた修正2:
-- 試みた修正3:
-- 考えられる原因:
-- 次の案:
+npm run build 2>&1
 ```
 
-上記を報告して作業を停止し、ユーザーの判断を仰ぐ。
+通ったら Step 5 へ。失敗したら試行回数をカウントして Step 2 に戻る。
 
----
+### Step 5: 修正内容を記録する
 
-## よくあるパターン
+docs/STATUS.md の「既知の問題」に修正内容を簡潔に記録する。
 
-### Geolocation は Client Component のみ
-```tsx
-// NG: Server Component で navigator を使う
-// OK: "use client" を宣言したコンポーネントで使う
-"use client";
-import { useGeolocation } from "@/hooks/useGeolocation";
+## 3回修正しても解決しない場合
+
+以下の内容を人間に報告して停止する:
+
+```
+## ビルドエラー 解決できませんでした
+
+**TASK**: TASK-XX
+**試行回数**: 3回
+
+**エラー内容**:
+（エラーメッセージ全文）
+
+**試みた修正**:
+1. 〇〇を修正した（結果: NG）
+2. 〇〇を修正した（結果: NG）
+3. 〇〇を修正した（結果: NG）
+
+**人間に確認したいこと**:
+〇〇について判断が必要です。
 ```
 
-### SVG の型エラー
-```tsx
-// transform 属性に number を渡すと型エラー
-// rotate(${degrees}) のように文字列で渡す
-transform={`rotate(${degrees}, 50, 50)`}
-```
+## 絶対にやらないこと
+
+- any 型を使ってエラーを逃げる
+- @ts-ignore / @ts-expect-error でエラーを無視する
+- ビルドが通らないままコミットする
+- TASK 範囲外のファイルを「ついでに修正」する
+- package.json に依存関係を勝手に追加する
