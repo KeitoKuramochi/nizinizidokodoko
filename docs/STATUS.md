@@ -4,7 +4,7 @@
 
 ## 現在のフェーズ
 
-**Phase**: TASK-06 実装完了 / Evaluator 評価待ち
+**Phase**: TASK-07 実装完了 / Evaluator 評価待ち
 **最終更新**: 2026-05-31
 **担当エージェント**: Generator
 
@@ -18,11 +18,18 @@
 | TASK-04 | 太陽位置計算・虹方角計算ロジック | [DONE] | cd60ae1 | 合格 |
 | TASK-05 | Open-Meteo API 取得フック | [DONE] | 19b4c97 | 合格 |
 | TASK-06 | コンパス UI コンポーネント | [DONE] | 6dd7b1c | 合格 |
-| TASK-07 | 気象条件表示コンポーネント | [WIP] | — | 実装中 |
+| TASK-07 | 気象条件表示コンポーネント | [EVAL] | 84e376f | Evaluator 評価待ち |
 | TASK-08 | ホーム画面の組み立て・エラーハンドリング | [ ] | — | TASK-06, 07 完了後に着手 |
 | TASK-09 | 最終 UI 調整・スマホ対応確認 | [ ] | — | TASK-08 完了後に着手 |
 
 ## 直近の作業ログ
+
+### TASK-07 完了
+- **日時**: 2026-05-31
+- **変更ファイル**: components/WeatherCondition.tsx（新規）, app/page.tsx
+- **commit**: 84e376f
+- **自己評価**: WeatherCondition コンポーネントを実装。status="loading" 時は「気象データ取得中...」を表示。status="error" または condition=null 時は「気象データの取得に失敗しました」を表示。condition.status="出やすい" 時は bg-green-100 text-green-800 の緑系バッジ、"出にくい" 時は bg-gray-100 text-gray-600 の灰色バッジを表示。バッジの下に condition.reason を表示。app/page.tsx に「出やすい」「出にくい」「ローディング」「エラー」の4パターンをモックデータで確認できるよう追加。npm run build 成功確認。any型・@ts-ignore なし。
+- **Evaluator 確認待ち**: 緑系バッジ・灰色バッジの表示確認、理由テキストの表示確認、スマホ幅375pxでのレイアウト確認
 
 ### TASK-06 完了
 - **日時**: 2026-05-31

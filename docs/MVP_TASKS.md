@@ -217,7 +217,7 @@ feat: add CompassCard UI component
 
 ## TASK-07: 気象条件表示コンポーネント
 
-**ステータス**: [WIP]
+**ステータス**: [EVAL]
 **担当**: Generator
 **依存**: TASK-05
 
