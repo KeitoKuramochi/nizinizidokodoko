@@ -43,7 +43,7 @@ feat: clean up project and install suncalc dependency
 
 ## TASK-02: 型定義ファイルの作成
 
-**ステータス**: [EVAL]
+**ステータス**: [DONE]
 **担当**: Generator
 **依存**: TASK-01
 
@@ -78,7 +78,7 @@ feat: add type definitions
 
 ## TASK-03: 位置情報取得フック
 
-**ステータス**: [ ]
+**ステータス**: [WIP]
 **担当**: Generator
 **依存**: TASK-02
 
