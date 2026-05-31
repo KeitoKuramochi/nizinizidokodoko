@@ -78,7 +78,7 @@ feat: add type definitions
 
 ## TASK-03: 位置情報取得フック
 
-**ステータス**: [WIP]
+**ステータス**: [EVAL]
 **担当**: Generator
 **依存**: TASK-02
 
