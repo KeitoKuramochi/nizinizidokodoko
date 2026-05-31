@@ -110,7 +110,7 @@ feat: add useGeolocation hook
 
 ## TASK-04: 太陽位置計算・虹方角計算ロジック
 
-**ステータス**: [EVAL]
+**ステータス**: [DONE]
 **担当**: Generator
 **依存**: TASK-03
 
@@ -143,7 +143,7 @@ feat: add sun position and rainbow direction calculation
 
 ## TASK-05: Open-Meteo API 取得フック
 
-**ステータス**: [ ]
+**ステータス**: [WIP]
 **担当**: Generator
 **依存**: TASK-03
 
