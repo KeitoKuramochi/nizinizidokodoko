@@ -78,7 +78,7 @@ feat: add type definitions
 
 ## TASK-03: 位置情報取得フック
 
-**ステータス**: [EVAL]
+**ステータス**: [DONE]
 **担当**: Generator
 **依存**: TASK-02
 
@@ -110,7 +110,7 @@ feat: add useGeolocation hook
 
 ## TASK-04: 太陽位置計算・虹方角計算ロジック
 
-**ステータス**: [ ]
+**ステータス**: [WIP]
 **担当**: Generator
 **依存**: TASK-03
 
